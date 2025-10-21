@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+        <title>Students List</title>
+    </head>
+    </body>
+    <h2 th:text="${pageTitle}"></h2>
+    <a th:href="@{/addStudent}">Add New Student</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="stu : ${students}">
+            <td th:text="${stu.id}"></td>
+            <td th:text="${stu.name}"></td>
+            <td th:text="${stu.email}"></td>
+            <td>
+                <span th:if="${stu.active}" class="status-active">Active</span>
+                <span th:unless="${stu.active}" class="status-inactive">Inactive</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    </body>
+</html>
