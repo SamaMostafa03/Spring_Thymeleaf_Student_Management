@@ -1,5 +1,8 @@
-package com.sama.SpringBootWeb1;
+package com.sama.SpringBootWeb1.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Student {
 
     private int id;
