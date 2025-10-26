@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+  <title>Edit Student</title>
+</head>
+<body>
+<h2 th:text="${pageTitle}">Edit Student</h2>
+
+<form th:action="@{/editStudent}" th:object="${student}" method="post">
+  <input type="hidden" th:field="*{id}">
+
+  <label>Name:</label>
+  <input type="text" th:field="*{name}" required><br>
+
+  <label>Email:</label>
+  <input type="email" th:field="*{email}" required><br>
+
+  <label>Active:</label>
+  <input type="checkbox" th:field="*{active}"><br>
+
+  <input type="submit" value="Update">
+</form>
+
+<br>
+<div style="text-align: center;">
+  <a th:href="@{/}" class="back-btn">Back to All Students</a>
+</div>
+</body>
+</html>
