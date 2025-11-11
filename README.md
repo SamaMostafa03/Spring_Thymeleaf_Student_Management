@@ -3,6 +3,7 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen.svg)](https://spring.io/projects/spring-boot)
 [![Thymeleaf](https://img.shields.io/badge/Thymeleaf-Template%20Engine-blue.svg)](https://www.thymeleaf.org/)
 [![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-316192.svg)](https://www.postgresql.org/)
+[![AWS](https://img.shields.io/badge/Deployed%20on-AWS-orange.svg)](https://aws.amazon.com/)
 
 ## 🌐 Live Demo
 **Deployed on AWS Elastic Beanstalk:**  
@@ -12,6 +13,10 @@
 **Spring-Thymeleaf Student Management System** is a full-stack CRUD web application built with **Spring Boot**, **Thymeleaf**, **JPA**, and **PostgreSQL**.  
 It allows users to manage student records with ease — including adding, updating, deleting, viewing, and searching for students — through a clean and responsive interface.
 
+This project is fully deployed on **AWS**, utilizing:
+- **AWS Elastic Beanstalk** for hosting and scaling the Spring Boot application.
+- **AWS RDS (PostgreSQL)** for a managed, reliable, and persistent cloud database.
+
 ---
 
 ## Features
@@ -20,7 +25,7 @@ It allows users to manage student records with ease — including adding, updati
 - Delete existing students  
 - Search by name or email  
 - View all students in a neatly formatted table  
-- Persistent data using PostgreSQL database
+- Persistent data storage via AWS RDS (PostgreSQL)
 
 ---
 
@@ -29,12 +34,13 @@ It allows users to manage student records with ease — including adding, updati
 |-------|-------------|
 | **Backend** | Spring Boot, Spring MVC, Spring Data JPA |
 | **Frontend** | Thymeleaf, HTML, CSS |
-| **Database** | PostgreSQL |
+| **Database** | PostgreSQL (Hosted on AWS RDS) |
+| **Cloud Platform** | AWS Elastic Beanstalk |
 | **Build Tool** | Maven |
 
 ---
 
-## How to Run
+## How to Run Locally
 1. Clone the repository
 
 2. Update application.properties with your PostgreSQL credentials
