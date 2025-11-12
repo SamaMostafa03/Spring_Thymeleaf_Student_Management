@@ -11,7 +11,7 @@
 
 ## Overview
 **Spring-Thymeleaf Student Management System** is a full-stack CRUD web application built with **Spring Boot**, **Thymeleaf**, **JPA**, and **PostgreSQL**.  
-It allows users to manage student records with ease — including adding, updating, deleting, viewing, and searching for students — through a clean and responsive interface.
+It allows users to manage students and courses records with ease — including adding, updating, deleting, viewing, and searching — through a clean and responsive interface.
 
 This project is fully deployed on **AWS**, utilizing:
 - **AWS Elastic Beanstalk** for hosting and scaling the Spring Boot application.
@@ -20,13 +20,11 @@ This project is fully deployed on **AWS**, utilizing:
 ---
 
 ## Features
-- Add new students  
-- Edit and update student information  
-- Delete existing students  
-- Search by name or email  
-- View all students in a neatly formatted table  
+- Add, edit, and delete students  
+- Search by name or email for student record 
+- Add, edit, and delete courses
+- View all students and courses in a neatly formatted table  
 - Persistent data storage via AWS RDS (PostgreSQL)
-
 ---
 
 ## Tech Stack
