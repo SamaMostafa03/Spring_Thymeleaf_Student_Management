@@ -22,21 +22,26 @@
 <table>
     <thead>
     <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Status</th>
+        <th>GPA</th>
+        <th>Gender</th>
+        <th>Department</th>
+        <th>Courses</th>
         <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="student : ${students}">
-        <td th:text="${student.id}"></td>
         <td th:text="${student.name}"></td>
         <td th:text="${student.email}"></td>
-        <td>
-            <span th:if="${student.active}" class="status-active">Active</span>
-            <span th:unless="${student.active}" class="status-inactive">Inactive</span>
+        <td th:text="${student.gpa}"></td>
+        <td th:text="${student.gender}"></td>
+        <td th:text="${student.department}"></td>
+        <td style=" display: flex; flex-direction: column;">
+            <span th:each="course : ${student.assignedCourses}"
+                  th:text="${course.name}"
+                  class="course-badge"></span>
         </td>
         <td>
             <a th:href="@{'/editStudent/' + ${student.id}}" class="action-btn edit-btn">Edit</a>

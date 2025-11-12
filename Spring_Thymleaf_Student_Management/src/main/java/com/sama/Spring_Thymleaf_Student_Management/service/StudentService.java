@@ -13,16 +13,6 @@ import java.util.List;
 public class StudentService {
     @Autowired
     private StudentRepo repo;
-
-    public void load() {
-        List<Student> students = new ArrayList<>(Arrays.asList(
-                new Student(1, "Lina Ali", "lina@example.com", true),
-                new Student(2, "Peter Parker", "peter@example.com", false),
-                new Student(3, "Sara Iyad", "sara@example.com", true),
-                new Student(4, "Mazen Ahmed", "mazen@example.com", false))
-        );
-        repo.saveAll(students);
-    }
     public List<Student> viewAllStudents(){
 
         return repo.findAllByOrderByIdAsc();

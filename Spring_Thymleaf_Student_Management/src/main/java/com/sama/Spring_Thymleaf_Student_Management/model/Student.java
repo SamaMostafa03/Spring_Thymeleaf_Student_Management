@@ -1,24 +1,70 @@
 package com.sama.Spring_Thymleaf_Student_Management.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String email;
-    private boolean active;
+    private float gpa;
+    private String gender;
+    private String department;
+
+    @ManyToMany
+    @JoinTable(
+            name = "student_courses",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> assignedCourses;
+
+    public Student(String name, String email, float gpa, String gender, String department, List<Course> assignedCourses) {
+        this.name = name;
+        this.email = email;
+        this.gpa = gpa;
+        this.gender = gender;
+        this.department = department;
+        this.assignedCourses = assignedCourses;
+    }
+
+    public float getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(float gpa) {
+        this.gpa = gpa;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
     public Student() {
     }
 
-    public Student(int id, String name, String email, boolean active) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.active = active;
+    public List<Course> getAssignedCourses() {
+        return assignedCourses;
+    }
+
+    public void setAssignedCourses(List<Course> assignedCourses) {
+        this.assignedCourses = assignedCourses;
     }
 
     public int getId() {
@@ -45,11 +91,4 @@ public class Student {
         this.email = email;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
 }

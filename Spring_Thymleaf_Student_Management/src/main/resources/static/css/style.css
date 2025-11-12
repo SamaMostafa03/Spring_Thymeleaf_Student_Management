@@ -35,7 +35,7 @@ h2 {
     display: flex;
     align-items: center;
     gap: 8px;
-    width: 250px;
+    width: 270px;
     border: none;
     background: none;
     padding: 0;
@@ -104,16 +104,23 @@ table {
     font-size: 16px;
 }
 
-/* 🌿 Table Header */
 thead {
+    text-align: center;
     background-color: #795548;
     color: #ffffff;
 }
 
+tr{
+    text-align: center;
+}
 th, td {
+    text-align: center;
     padding: 15px;
-    text-align: left;
     border-bottom: 1px solid #ddd;
+}
+td {
+    white-space: nowrap;
+    vertical-align: middle;
 }
 
 tr:nth-child(even) {
@@ -124,7 +131,6 @@ tbody tr:hover {
     background-color: #f1f1f1;
 }
 
-/* ✅ Active / Inactive status colors */
 .status-active {
     color: green;
     font-weight: 600;
@@ -134,13 +140,17 @@ tbody tr:hover {
     color: red;
     font-weight: 600;
 }
-/* ===== Buttons ===== */
 .action-btn {
     text-decoration: none;
     color: white;
-    padding: 6px 10px;
-    border-radius: 4px;
-    margin: 0 10px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 5px;
+    display: inline-block;       /* ensures proper button shape */
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 .edit-btn {
@@ -149,6 +159,7 @@ tbody tr:hover {
 
 .edit-btn:hover {
     background-color: #2980b9;
+    transform: scale(1.05);
 }
 
 .delete-btn {
@@ -157,33 +168,36 @@ tbody tr:hover {
 
 .delete-btn:hover {
     background-color: #c0392b;
+    transform: scale(1.05);
 }
+
+/* optional: make the action column centered */
+td:last-child {
+    text-align: center;
+}
+
 form {
     background-color: #FFFFFF;
     padding: 30px;
-    border-radius: 4px;
-    display: inline-block;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    max-width: 400px;
+    max-width: 450px;
     width: 100%;
     box-sizing: border-box;
-    margin-top: 20px;
-}
-
-input[type="submit"] {
-    border: 1px solid #E0E0E0;
-    border-radius: 4px;
-    padding: 10px 15px;
-    margin: 10px 0;
-    width: calc(100% - 30px);
-    box-sizing: border-box;
-    font-size: 16px;
+    margin: 40px auto; /* centers it horizontally */
+    display: block;
 }
 
 input[type="submit"] {
     background-color: #795548;
     color: white;
-    border: none;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     outline: none;
@@ -197,13 +211,32 @@ input[type="submit"]:focus {
     box-shadow: 0 0 8px rgba(121, 85, 72, 0.6);
 }
 
-label {
-    font-size: 18px;
-    color: #795548;
-    font-weight: normal;
-    margin: 15px 0 5px;
+form div.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
+form label {
+    font-size: 18px;
+    color: #795548;
+    font-weight: bold;
+    width: 35%;  /* controls label width */
+    text-align: right;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form select {
+    width: 65%; /* consistent input width */
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 /* Ripple Effect */
 @keyframes ripple {
     0% {
@@ -255,4 +288,13 @@ p {
     width: 100%;
     box-sizing: border-box;
     margin-top: 20px;
+}
+
+.course-badge {
+    background-color: #e0f0ff;
+    border-radius: 12px;
+    padding: 2px 8px;
+    margin: 2px;
+    display: inline-block;
+    font-size: 0.9em;
 }

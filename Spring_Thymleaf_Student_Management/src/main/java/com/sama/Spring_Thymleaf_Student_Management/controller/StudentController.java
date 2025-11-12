@@ -1,6 +1,7 @@
 package com.sama.Spring_Thymleaf_Student_Management.controller;
 
 import com.sama.Spring_Thymleaf_Student_Management.model.Student;
+import com.sama.Spring_Thymleaf_Student_Management.service.CourseService;
 import com.sama.Spring_Thymleaf_Student_Management.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 public class StudentController {
     @Autowired
     private StudentService studentService;
-
+    @Autowired
+    private CourseService courseService;
     @GetMapping({"/" , "home"})
     public String viewAllStudents(Model model){
         model.addAttribute("pageTitle", "Students List");
@@ -22,12 +24,12 @@ public class StudentController {
     @GetMapping("/addStudent")
     public String addStudentForm(Model model) {
         model.addAttribute("student", new Student());
+        model.addAttribute("courses", courseService.viewCourses());
         return "add-student";
     }
 
     @PostMapping("/addStudent")
     public String saveStudent(@ModelAttribute("student") Student student) {
-        student.setId(studentService.getStudentsSize()+1);
         studentService.addStudent(student);
         return "redirect:/";
     }
@@ -58,10 +60,6 @@ public class StudentController {
         return "index";
     }
 
-    @GetMapping("/loadData")
-    public void load(){
-        studentService.load();
-    }
     @GetMapping("/findStudent/{studentId}")
     public Student findStudent(@PathVariable("studentId") int studentId){
         return studentService.findStudent(studentId);
