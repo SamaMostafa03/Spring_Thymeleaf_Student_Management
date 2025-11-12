@@ -6,7 +6,18 @@
 
 <body>
 
-<h2 th:text="${pageTitle}"></h2>
+<header class="page-header">
+    <div class="header-container">
+        <div class="logo">Student Management System</div>
+        <nav class="nav-links">
+            <a href="/">Students</a>
+            <a href="/courses">Courses</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <h2 th:text="${pageTitle}"></h2>
 
 <div class="top-bar">
     <form class="search-form" th:action="@{/search}" method="get">
@@ -58,6 +69,11 @@
 <div class="bottom-bar">
     <a th:href="@{/addStudent}" class="add-btn">Add New Student</a>
 </div>
+</main>
+
+<footer class="page-footer">
+    <p>© 2025 Course Management System | All rights reserved</p>
+</footer>
 
 </body>
 </html>

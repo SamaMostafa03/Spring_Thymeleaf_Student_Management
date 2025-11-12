@@ -10,7 +10,19 @@
 </head>
 
 <body>
-<h2>Edit Student Data</h2>
+
+<header class="page-header">
+  <div class="header-container">
+    <div class="logo">Student Management System</div>
+    <nav class="nav-links">
+      <a href="/">Students</a>
+      <a href="/courses">Courses</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <h2>Edit Student Data</h2>
+
 <form th:action="@{/editStudent}" th:object="${student}" method="post">
 
   <div class="form-row">
@@ -27,8 +39,8 @@
     <label for="gender">Gender:</label>
     <select id="gender" th:field="*{gender}" required>
       <option value="" disabled selected>Select gender</option>
-      <option value="MALE">Male</option>
-      <option value="FEMALE">Female</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
     </select>
   </div>
 
@@ -64,7 +76,11 @@
 <div style="text-align: center;">
   <a th:href="@{/}" class="back-btn">Back to All Students</a>
 </div>
+</main>
 
+<footer class="page-footer">
+  <p>© 2025 Course Management System | All rights reserved</p>
+</footer>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         $('#courses').select2({

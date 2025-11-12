@@ -10,6 +10,17 @@
 </head>
 
 <body>
+
+<header class="page-header">
+    <div class="header-container">
+        <div class="logo">Student Management System</div>
+        <nav class="nav-links">
+            <a href="/">Students</a>
+            <a href="/courses">Courses</a>
+        </nav>
+    </div>
+</header>
+<main>
 <h2>Add Student</h2>
 <form th:action="@{/addStudent}" th:object="${student}" method="post">
 
@@ -27,8 +38,8 @@
         <label for="gender">Gender:</label>
         <select id="gender" th:field="*{gender}" required>
             <option value="" disabled selected>Select gender</option>
-            <option value="MALE">Male</option>
-            <option value="FEMALE">Female</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
         </select>
     </div>
 
@@ -74,6 +85,10 @@
         });
     });
 </script>
+</main>
 
+<footer class="page-footer">
+    <p>© 2025 Course Management System | All rights reserved</p>
+</footer>
 </body>
 </html>

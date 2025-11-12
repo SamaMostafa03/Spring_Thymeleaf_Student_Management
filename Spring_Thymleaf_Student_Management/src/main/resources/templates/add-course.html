@@ -4,6 +4,17 @@
     <title>Add Course</title>
 </head>
 </body>
+
+<header class="page-header">
+    <div class="header-container">
+        <div class="logo">Student Management System</div>
+        <nav class="nav-links">
+            <a href="/">Students</a>
+            <a href="/courses">Courses</a>
+        </nav>
+    </div>
+</header>
+<main>
 <h2>Add Course</h2>
 <form th:action="@{/addCourse}" th:object="${course}" method="post">
     <div class="form-row">
@@ -23,5 +34,11 @@
 <div style="text-align: center;">
     <a th:href="@{/courses}" class="back-btn">Back to All Courses</a>
 </div>
+</main>
+
+<footer class="page-footer">
+    <p>© 2025 Course Management System | All rights reserved</p>
+</footer>
+
 </body>
 </html>
