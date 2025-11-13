@@ -1,0 +1,59 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Student Portal</title>
+</head>
+<body>
+<header class="page-header" style="width: 100%;">
+  <div class="header-container">
+    <div class="logo">Student Management System</div>
+    <nav class="nav-links">
+      <a href="/admin/viewStudents">Students</a>
+      <a href="/admin/courses">Courses</a>
+      <a href="/admin/addStudent">Add Student</a>
+      <a href="/admin/addCourse">Add Course</a>
+      <button type="button" class="logout-btn" onclick="document.getElementById('logoutForm').submit()">Logout</button>
+      <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
+    </nav>
+  </div>
+</header>
+
+<main style="max-width: 900px; margin: 2rem auto; border-radius: 10px; border: 2px solid #795548; box-shadow: 0 2px 6px rgba(0,0,0,0.1);" >
+  <h2>Student Portal</h2>
+  <div class="profile-info">
+    <p><strong>Name:</strong> <span th:text="${student.name}"></span></p>
+    <p><strong>Department:</strong> <span th:text="${student.department}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
+    <p><strong>Gender:</strong> <span th:text="${student.gender}"></span></p>
+    <p><strong>Student ID:</strong> <span th:text="${student.studentId}"></span></p>
+    <p><strong>GPA:</strong> <span th:text="${student.gpa}"></span></p>
+  </div>
+
+  <div class="courses-section">
+    <h3>Assigned Courses</h3>
+    <ul class="courses-list" th:if="${#lists.size(student.assignedCourses) > 0}">
+      <li th:each="course : ${student.assignedCourses}">
+                <span>
+                    <strong th:text="${course.name}"></strong>
+                    <span style="color:#555;"> — </span>
+                    <span th:text="${course.teacher}"></span>
+                </span>
+      </li>
+    </ul>
+
+    <p class="no-courses" th:if="${#lists.isEmpty(student.assignedCourses)}">
+      You have not been assigned any courses yet.
+    </p>
+  </div>
+
+  <div style="text-align: center;">
+    <a th:href="@{'/admin/editStudent/' + ${student.id}}" class="action-btn edit-btn">Edit Student Data</a>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <p>© 2025 Student Management System | Student Portal</p>
+</footer>
+</body>
+</html>

@@ -54,7 +54,7 @@ public class DemoService {
             String randomName = randomAlphabetic(5) + " " + randomAlphabetic(7);
             student.setName(randomName);
             student.setEmail(randomEmail);
-            student.setDepartment("Computer Science");
+            student.setDepartment("CS");
             student.setGender("Female");
             float gpa = 2.0f + new Random().nextFloat() * 2.0f;
             student.setGpa(Math.round(gpa * 10f) / 10f);

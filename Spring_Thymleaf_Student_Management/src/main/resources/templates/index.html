@@ -7,7 +7,7 @@
 
 <body>
 
-<header class="page-header">
+<header class="page-header" style="width: 100%;">
     <div class="header-container">
         <div class="logo">Student Management System</div>
         <nav class="nav-links">
@@ -23,8 +23,8 @@
 <main>
     <h2 th:text="${pageTitle}"></h2>
 
-<div class="top-bar">
-    <form class="search-form" th:action="@{/admin/search}" method="get">
+<div class="top-bar"  style="text-align: center;">
+    <form class="search-form" th:action="@{/admin/search}" method="get" >
         <input type="text" name="keyword" placeholder="Search by name or email" required>
         <button type="submit">Search</button>
     </form>
@@ -41,9 +41,7 @@
         <th>Email</th>
         <th>ID</th>
         <th>GPA</th>
-        <th>Gender</th>
         <th>Department</th>
-        <th>Courses</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -53,17 +51,9 @@
         <td th:text="${student.email}"></td>
         <td th:text="${student.studentId}"></td>
         <td th:text="${student.gpa}"></td>
-        <td th:text="${student.gender}"></td>
         <td th:text="${student.department}"></td>
-        <td style=" display: flex; flex-direction: column;">
-            <span th:each="course : ${student.assignedCourses}" th:if="${#lists.size(student.assignedCourses) > 0}"
-                  th:text="${course.name}"
-                  class="course-badge"></span>
-            <p th:if="${#lists.isEmpty(student.assignedCourses)}" style="font-size: 16px;">
-                None
-            </p>
-        </td>
         <td>
+            <a th:href="@{'/admin/viewPortal/'+${student.id}}" class="action-btn portal-btn">Portal</a>
             <a th:href="@{'/admin/editStudent/' + ${student.id}}" class="action-btn edit-btn">Edit</a>
             <a th:href="@{'/admin/deleteStudent/' + ${student.id}}"
                class="action-btn delete-btn"
@@ -80,7 +70,7 @@
 <!--</div>-->
 </main>
 
-<footer class="page-footer">
+<footer class="page-footer" style="width: 100%;">
     <p>© 2025 Course Management System | All rights reserved</p>
 </footer>
 

@@ -65,10 +65,13 @@ public class StudentController {
         return "index";
     }
 
-    @GetMapping("/admin/findStudent/{studentId}")
-    public Student findStudent(@PathVariable("studentId") int studentId){
-        return studentService.findStudent(studentId);
+    @GetMapping("/admin/viewPortal/{studentId}")
+    public String viewPortal(@PathVariable("studentId") int studentId, Model model){
+        Student student = studentService.findStudent(studentId);
+        model.addAttribute("student", student);
+        return "student-portal";
     }
+
 
     @GetMapping("/student/{id}")
     public String viewStudentProfile(@PathVariable int id, Model model) {

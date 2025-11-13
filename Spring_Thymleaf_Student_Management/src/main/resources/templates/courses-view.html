@@ -22,7 +22,7 @@
 <main>
 <h2 th:text="${pageTitle}"></h2>
 
-<div class="top-bar">
+<div class="top-bar"  style="text-align: center;">
     <form class="search-form" th:action="@{/admin/searchCourse}" method="get">
         <input type="text" name="keyword" placeholder="Search by name or teacher" required>
         <button type="submit">Search</button>
