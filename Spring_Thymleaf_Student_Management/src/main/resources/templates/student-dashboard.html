@@ -10,6 +10,8 @@
         <nav class="nav-links">
             <a th:href="@{'/student/' + ${student.id}}">Student Portal</a>
             <a th:href="@{'/student/' + ${student.id} + '/courses'}">Manage Courses</a>
+            <button type="button" class="logout-btn" onclick="document.getElementById('logoutForm').submit()">Logout</button>
+            <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
         </nav>
     </div>
 </header>
@@ -18,11 +20,11 @@
     <h2>Student Portal</h2>
     <div class="profile-info">
         <p><strong>Name:</strong> <span th:text="${student.name}"></span></p>
-        <p><strong>Gender:</strong> <span th:text="${student.gender}"></span></p>
-        <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
-        <p><strong>GPA:</strong> <span th:text="${student.gpa}"></span></p>
-        <p><strong>Student ID:</strong> <span th:text="${student.studentId}"></span></p>
         <p><strong>Department:</strong> <span th:text="${student.department}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
+        <p><strong>Gender:</strong> <span th:text="${student.gender}"></span></p>
+        <p><strong>Student ID:</strong> <span th:text="${student.studentId}"></span></p>
+        <p><strong>GPA:</strong> <span th:text="${student.gpa}"></span></p>
     </div>
 
     <div class="courses-section">

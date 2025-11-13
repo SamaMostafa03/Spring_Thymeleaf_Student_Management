@@ -56,7 +56,8 @@ public class DemoService {
             student.setEmail(randomEmail);
             student.setDepartment("Computer Science");
             student.setGender("Female");
-            student.setGpa(2.0f + new Random().nextFloat() * 2.0f);
+            float gpa = 2.0f + new Random().nextFloat() * 2.0f;
+            student.setGpa(Math.round(gpa * 10f) / 10f);
             studentService.addStudent(student,true);
             id = student.getId();
             rawPassword = student.getStudentId().toString();
@@ -84,7 +85,7 @@ public class DemoService {
         HttpSession session = request.getSession(true);
         session.setAttribute("SPRING_SECURITY_CONTEXT", context);
 
-        System.out.println("✅ Demo login successful for " + randomEmail);
+        System.out.println("Demo login successful for " + randomEmail);
 
         return id;
     }

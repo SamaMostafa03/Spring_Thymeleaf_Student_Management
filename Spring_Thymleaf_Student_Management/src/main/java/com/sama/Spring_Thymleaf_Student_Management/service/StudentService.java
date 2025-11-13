@@ -2,7 +2,9 @@ package com.sama.Spring_Thymleaf_Student_Management.service;
 
 import com.sama.Spring_Thymleaf_Student_Management.model.Course;
 import com.sama.Spring_Thymleaf_Student_Management.model.Student;
+import com.sama.Spring_Thymleaf_Student_Management.model.StudentIdSequence;
 import com.sama.Spring_Thymleaf_Student_Management.model.User;
+import com.sama.Spring_Thymleaf_Student_Management.repo.StudentIdSequenceRepo;
 import com.sama.Spring_Thymleaf_Student_Management.repo.StudentRepo;
 import com.sama.Spring_Thymleaf_Student_Management.repo.UserRepo;
 import jakarta.transaction.Transactional;
@@ -24,6 +26,8 @@ public class StudentService {
     private UserRepo userRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private StudentIdSequenceRepo sequenceRepo;
 
     public List<Student> viewAllStudents(){
 
@@ -31,11 +35,14 @@ public class StudentService {
     }
     public long generateStudentId() {
         int year = java.time.Year.now().getValue();
-        long count = repo.count() + 1;
-        return Long.parseLong(year + String.format("%04d", count)); // e.g. 20250001
+        StudentIdSequence sequence = sequenceRepo.findById(year)
+                .orElse(new StudentIdSequence(year, 0));
+        sequence.setCount(sequence.getCount() + 1);
+        sequenceRepo.save(sequence);
+        return Long.parseLong(year + String.format("%04d", sequence.getCount()));
     }
     public void addStudent(Student student) {
-        addStudent(student, false);  // default value
+        addStudent(student, false);
     }
     public void addStudent(Student student, boolean isDemo) {
         long generateStudentId = generateStudentId();

@@ -19,6 +19,9 @@
       <a href="/admin/courses">Courses</a>
       <a href="/admin/addStudent">Add Student</a>
       <a href="/admin/addCourse">Add Course</a>
+      <button type="button" class="logout-btn" onclick="document.getElementById('logoutForm').submit()">Logout</button>
+      <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;"></form>
+
     </nav>
   </div>
 </header>
@@ -27,6 +30,7 @@
 
 <form th:action="@{/admin/editStudent}" th:object="${student}" method="post">
   <input type="hidden" th:field="*{id}">
+  <input type="hidden" th:field="*{studentId}">
 
   <div class="form-row">
     <label>Full Name:</label>

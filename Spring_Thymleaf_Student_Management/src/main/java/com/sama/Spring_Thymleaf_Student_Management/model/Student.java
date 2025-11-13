@@ -10,7 +10,6 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(unique = true)
     private Long studentId;
     private String name;
     private String email;
