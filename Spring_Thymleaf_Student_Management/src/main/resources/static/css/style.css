@@ -71,45 +71,6 @@ main {
     color: #ffd7a3;
 }
 
-/* Hamburger menu (hidden on large screens) */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: #8b5e3c;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links a, .logout-btn {
-        margin: 10px 0;
-        font-size: 18px;
-    }
-}
-
-
 h2 {
     color: #795548;
     margin-bottom: 30px;
