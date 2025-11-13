@@ -17,33 +17,33 @@ public class StudentController {
     private StudentService studentService;
     @Autowired
     private CourseService courseService;
-    @GetMapping({"/" , "home"})
+    @GetMapping({"/admin/viewStudents"})
     public String viewAllStudents(Model model){
         model.addAttribute("pageTitle", "Students List");
         model.addAttribute("students",studentService.viewAllStudents());
         return "index";
     }
 
-    @GetMapping("/addStudent")
+    @GetMapping("/admin/addStudent")
     public String addStudentForm(Model model) {
         model.addAttribute("student", new Student());
         model.addAttribute("courses", courseService.viewCourses());
         return "add-student";
     }
 
-    @PostMapping("/addStudent")
+    @PostMapping("/admin/addStudent")
     public String saveStudent(@ModelAttribute("student") Student student) {
         studentService.addStudent(student);
-        return "redirect:/";
+        return "redirect:/admin/viewStudents";
     }
 
-    @GetMapping("/deleteStudent/{id}")
+    @GetMapping("/admin/deleteStudent/{id}")
     public String deleteStudent(@PathVariable int id){
         studentService.deleteStudent(id);
-        return "redirect:/";
+        return "redirect:/admin/viewStudents";
     }
 
-    @GetMapping("/editStudent/{id}")
+    @GetMapping("/admin/editStudent/{id}")
     public String editStudentForm(@PathVariable("id") int id, Model model) {
         model.addAttribute("student", studentService.findStudent(id));
         model.addAttribute("pageTitle", "Edit Student");
@@ -52,20 +52,20 @@ public class StudentController {
         return "edit-student";
     }
 
-    @PostMapping("/editStudent")
+    @PostMapping("/admin/editStudent")
     public String updateStudent(@ModelAttribute("student") Student student) {
         studentService.updateStudent(student);
-        return "redirect:/";
+        return "redirect:/admin/viewStudents";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/admin/search")
     public String search(@RequestParam String keyword, Model model){
         model.addAttribute("pageTitle", "Search Results");
         model.addAttribute("students" , studentService.search(keyword));
         return "index";
     }
 
-    @GetMapping("/findStudent/{studentId}")
+    @GetMapping("/admin/findStudent/{studentId}")
     public Student findStudent(@PathVariable("studentId") int studentId){
         return studentService.findStudent(studentId);
     }

@@ -44,6 +44,7 @@ h2, h3 {
 .logo {
     font-size: 18px;
     font-weight: bold;
+    margin-right:200px;
 }
 
 .nav-links a {
@@ -57,6 +58,23 @@ h2, h3 {
 .nav-links a:hover {
     color: #ffd7a3;
 }
+
+
+.logout-btn {
+  background-color: #8b5e3c;
+  color: white;
+  border: none;
+  font-size: 18px;
+  margin-left: 100px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.logout-btn:hover {
+  color: #ffd7a3;
+  background-color: #8b5e3c;
+}
+
 
 
 h2 {

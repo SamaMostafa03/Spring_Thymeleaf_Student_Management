@@ -2,6 +2,7 @@ package com.sama.Spring_Thymleaf_Student_Management.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -9,11 +10,16 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true)
+    private Long studentId;
     private String name;
     private String email;
     private float gpa;
     private String gender;
     private String department;
+
+    @OneToOne(mappedBy = "student", cascade = CascadeType.REMOVE)
+    private User user;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -22,14 +28,29 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private List<Course> assignedCourses;
+    public Long getStudentId() {
+        return studentId;
+    }
 
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
 
-    public Student(String name, String email, float gpa, String gender, String department, List<Course> assignedCourses) {
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    public Student(Long studentId, String name, String email, float gpa, String gender, String department, User user, List<Course> assignedCourses) {
+        this.studentId = studentId;
         this.name = name;
         this.email = email;
         this.gpa = gpa;
         this.gender = gender;
         this.department = department;
+        this.user = user;
         this.assignedCourses = assignedCourses;
     }
 

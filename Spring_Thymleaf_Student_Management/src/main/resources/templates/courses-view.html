@@ -10,10 +10,10 @@
     <div class="header-container">
         <div class="logo">Student Management System</div>
         <nav class="nav-links">
-            <a href="/">Students</a>
-            <a href="/courses">Courses</a>
-            <a href="/addStudent">Add Student</a>
-            <a href="/addCourse">Add Course</a>
+            <a href="/admin/viewStudents">Students</a>
+            <a href="/admin/courses">Courses</a>
+            <a href="/admin/addStudent">Add Student</a>
+            <a href="/admin/addCourse">Add Course</a>
         </nav>
     </div>
 </header>
@@ -21,14 +21,14 @@
 <h2 th:text="${pageTitle}"></h2>
 
 <div class="top-bar">
-    <form class="search-form" th:action="@{/searchCourse}" method="get">
+    <form class="search-form" th:action="@{/admin/searchCourse}" method="get">
         <input type="text" name="keyword" placeholder="Search by name or teacher" required>
         <button type="submit">Search</button>
     </form>
 </div>
 
 <div th:if="${pageTitle == 'Search Results'}" style="text-align: center;">
-    <a th:href="@{/courses}" class="back-btn">Back to All Courses</a>
+    <a th:href="@{/admin/courses}" class="back-btn">Back to All Courses</a>
 </div>
 
 <table>
@@ -49,8 +49,8 @@
             <span th:unless="${course.available}" class="status-inactive">Unavailable</span>
         </td>
         <td>
-            <a th:href="@{'/editCourse/' + ${course.id}}" class="action-btn edit-btn">Edit</a>
-            <a th:href="@{'/deleteCourse/' + ${course.id}}"
+            <a th:href="@{'/admin/editCourse/' + ${course.id}}" class="action-btn edit-btn">Edit</a>
+            <a th:href="@{'/admin/deleteCourse/' + ${course.id}}"
                class="action-btn delete-btn"
                onclick="return confirm('Are you sure you want to delete this course?');">
                 Delete

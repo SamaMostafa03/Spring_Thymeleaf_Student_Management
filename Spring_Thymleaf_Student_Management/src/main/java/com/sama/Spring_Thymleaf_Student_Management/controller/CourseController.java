@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class CourseController {
     @Autowired
     private CourseService courseService;
@@ -32,13 +33,13 @@ public class CourseController {
     @PostMapping("/addCourse")
     public String saveCourse(@ModelAttribute("course") Course course) {
         courseService.addCourse(course);
-        return "redirect:/courses";
+        return "redirect:/admin/courses";
     }
 
     @GetMapping("/deleteCourse/{id}")
     public String deleteCourse(@PathVariable int id){
         courseService.deleteCourse(id);
-        return "redirect:/courses";
+        return "redirect:/admin/courses";
     }
 
 
@@ -52,7 +53,7 @@ public class CourseController {
     @PostMapping("/editCourse")
     public String updateCourse(@ModelAttribute("course") Course course) {
         courseService.updateCourse(course);
-        return "redirect:/courses";
+        return "redirect:/admin/courses";
     }
 
     @GetMapping("/searchCourse")

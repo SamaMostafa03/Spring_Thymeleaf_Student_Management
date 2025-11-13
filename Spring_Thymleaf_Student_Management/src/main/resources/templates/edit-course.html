@@ -9,17 +9,17 @@
     <div class="header-container">
         <div class="logo">Student Management System</div>
         <nav class="nav-links">
-            <a href="/">Students</a>
-            <a href="/courses">Courses</a>
-            <a href="/addStudent">Add Student</a>
-            <a href="/addCourse">Add Course</a>
+            <a href="/admin/viewStudents">Students</a>
+            <a href="/admin/courses">Courses</a>
+            <a href="/admin/addStudent">Add Student</a>
+            <a href="/admin/addCourse">Add Course</a>
         </nav>
     </div>
 </header>
 <main>
 <h2 th:text="${pageTitle}">Edit Course</h2>
 
-<form th:action="@{/editCourse}" th:object="${course}" method="post">
+<form th:action="@{/admin/editCourse}" th:object="${course}" method="post">
     <input type="hidden" th:field="*{id}">
     <div class="form-row">
     <label>Name:</label>
@@ -36,7 +36,7 @@
 
 <br>
 <div style="text-align: center;">
-    <a th:href="@{/courses}" class="back-btn">Back to All Courses</a>
+    <a th:href="@{/admin/courses}" class="back-btn">Back to All Courses</a>
 </div>
 </main>
 
