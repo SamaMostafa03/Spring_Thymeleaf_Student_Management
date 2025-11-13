@@ -52,3 +52,18 @@ This project is fully deployed on **AWS**, utilizing:
 3. Run the Spring Boot application
 
 4. Visit http://localhost:5000 in your browser
+
+## Demo Screenshots
+**Login Page**
+
+![Login Page](images/login.png)
+
+**Admin:**
+
+![Students](images/students.png)  
+![Courses](images/courses.png)
+
+**Student:**
+
+![Portal](images/Student%20Portal.png)
+![Management](images/Manage%20Course.png)
