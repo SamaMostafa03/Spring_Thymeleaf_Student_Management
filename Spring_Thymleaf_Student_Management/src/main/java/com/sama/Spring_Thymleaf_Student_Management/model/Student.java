@@ -15,13 +15,14 @@ public class Student {
     private String gender;
     private String department;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "student_courses",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private List<Course> assignedCourses;
+
 
     public Student(String name, String email, float gpa, String gender, String department, List<Course> assignedCourses) {
         this.name = name;

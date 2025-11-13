@@ -3,21 +3,30 @@ body {
     background-color: #FAFAFA;
     color: #333;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
 }
 
 main {
-    padding: 80px 20px 70px;
+    padding: 30px 20px 20px;
+    flex: 1;
+}
+
+h2, h3 {
+    color: #795548;
+    margin-bottom: 30px;
 }
 
 .page-header {
-    position: fixed;
-    top: 0;
-    left: 0;
+    display: flex;
+    justify-content: center;
     width: 100%;
     background-color: #8b5e3c;
     color: white;
+    position: relative;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     z-index: 1000;
 }
@@ -26,6 +35,8 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: 1200px;
     padding: 10px 40px;
     height: 50px;
 }
@@ -44,7 +55,7 @@ main {
 }
 
 .nav-links a:hover {
-    color: #ffd7a3; /* lighter hover color */
+    color: #ffd7a3;
 }
 
 
@@ -342,10 +353,65 @@ p {
     display: inline-block;
     font-size: 0.9em;
 }
+
+
+.profile-info {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: start;
+    column-gap: 12rem;
+    row-gap: 0.8rem;
+    background: #f8f9fa;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.profile-info p {
+    margin: 0;
+    font-size: 1rem;
+    display: flex;
+    gap: 0.4rem;
+}
+
+.courses-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.courses-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.courses-list li {
+    background: #eef3ff;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.6rem;
+    border-left: 4px solid #795548;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.no-courses {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+@media (max-width: 700px) {
+    .profile-info {
+        grid-template-columns: 1fr;
+    }
+}
+
 .page-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
     height: 45px;
     display: flex;
@@ -355,7 +421,6 @@ p {
     color: white;
     font-size: 14px;
     box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
+    margin-top: 2rem; /* adds space before the footer */
 }
-
 

@@ -69,4 +69,36 @@ public class StudentController {
     public Student findStudent(@PathVariable("studentId") int studentId){
         return studentService.findStudent(studentId);
     }
+
+    @GetMapping("/student/{id}")
+    public String viewStudentProfile(@PathVariable int id, Model model) {
+        Student student = studentService.findStudent(id);
+        model.addAttribute("student", student);
+        return "student-dashboard";
+    }
+
+    @GetMapping("/student/{id}/courses")
+    public String viewStudentCourses(@PathVariable int id, Model model) {
+        Student student = studentService.findStudent(id);
+        List<Course> allCourses = courseService.viewCourses();
+        List<Course> assignedCourses = student.getAssignedCourses();
+        allCourses.removeAll(assignedCourses);
+        allCourses.removeIf(course -> !course.isAvailable());
+        model.addAttribute("student", student);
+        model.addAttribute("allCourses", allCourses);
+        return "student-courses-management";
+    }
+
+    @GetMapping("/student/{studentId}/removeCourse/{courseId}")
+    public String removeStudentCourse(@PathVariable int studentId, @PathVariable int courseId) {
+        studentService.removeCourseFromStudent(studentId, courseId);
+        return "redirect:/student/" + studentId + "/courses";
+    }
+
+   @GetMapping("/student/{studentId}/addCourse/{courseId}")
+    public String addStudentCourse(@PathVariable int studentId, @PathVariable int courseId){
+        studentService.addCourseToStudent(studentId,courseId);
+        return "redirect:/student/" + studentId + "/courses";
+   }
+
 }
