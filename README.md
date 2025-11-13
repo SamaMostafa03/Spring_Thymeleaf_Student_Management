@@ -56,12 +56,12 @@ This project is fully deployed on **AWS**, utilizing:
 ## Demo Screenshots
 **Login Page**
 
-![Login Page](images/login.png)
+![Login Page](images/Login.png)
 
 **Admin:**
 
-![Students](images/students.png)  
-![Courses](images/courses.png)
+![Students](images/Students.png)  
+![Courses](images/Courses.png)
 
 **Student:**
 
